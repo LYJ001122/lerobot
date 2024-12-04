@@ -105,7 +105,7 @@ def compute_stats(dataset, batch_size=8, num_workers=8, max_num_samples=None):
     for i, batch in enumerate(
         tqdm.tqdm(dataloader, total=ceil(max_num_samples / batch_size), desc="Compute mean, min, max")
     ):
-        this_batch_size = len(batch["index"])
+        this_batch_size = len(batch)
         running_item_count += this_batch_size
         if first_batch is None:
             first_batch = deepcopy(batch)
@@ -131,7 +131,7 @@ def compute_stats(dataset, batch_size=8, num_workers=8, max_num_samples=None):
     for i, batch in enumerate(
         tqdm.tqdm(dataloader, total=ceil(max_num_samples / batch_size), desc="Compute std")
     ):
-        this_batch_size = len(batch["index"])
+        this_batch_size = len(batch)
         running_item_count += this_batch_size
         # Sanity check to make sure the batches are still in the same order as before.
         if first_batch_ is None:

@@ -18,9 +18,9 @@ output_directory.mkdir(parents=True, exist_ok=True)
 
 # Number of offline training steps (we'll only do offline training for this example.)
 # Adjust as you prefer. 5000 steps are needed to get something worth evaluating.
-training_steps = 5000
+training_steps = 100
 device = torch.device("cuda")
-log_freq = 250
+log_freq = 10
 
 # Set up the dataset.
 delta_timestamps = {

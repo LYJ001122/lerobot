@@ -141,7 +141,7 @@ class ACTPolicy(
         actions_hat, (mu_hat, log_sigma_x2_hat) = self.model(batch)
 
         l1_loss = (
-            F.l1_loss(batch["action"], actions_hat, reduction="none") * ~batch["action_is_pad"].unsqueeze(-1)
+            F.l1_loss(batch["action"].view(batch["action"].shape[0], -1, 6), actions_hat, reduction="none") #* ~batch["action_is_pad"].unsqueeze(-1)
         ).mean()
 
         loss_dict = {"l1_loss": l1_loss.item()}

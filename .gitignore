@@ -6,7 +6,12 @@ wandb
 # Data
 data
 outputs
-
+/re/*
+*.jpg
+*.npy
+/*.jpg
+/*.npy
+log/
 # Apple
 .DS_Store
 
