@@ -7,7 +7,7 @@ wandb
 data
 outputs
 /re/*
-*.jpg
+*.jpg   
 *.npy
 /*.jpg
 /*.npy
