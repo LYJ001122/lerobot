@@ -211,10 +211,10 @@ class ACTConfig:
     feedforward_activation: str = "relu"
     n_encoder_layers: int = 4
     n_decoder_layers: int = 1
-    use_vae: bool = False
+    use_vae: bool = True
     latent_dim: int = 32
     n_vae_encoder_layers: int = 4
 
-    temporal_ensemble_coeff: float | None = None
+    temporal_ensemble_coeff: float | None = 0.01
     dropout: float = 0.1
     kl_weight: float = 10.0
