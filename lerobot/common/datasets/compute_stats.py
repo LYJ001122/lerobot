@@ -58,6 +58,8 @@ def get_stats_einops_patterns(dataset, num_workers=0):
             assert batch[key].min() >= 0, f"expect pixels greater than 1, but instead {batch[key].min()=}"
 
             stats_patterns[key] = "b c h w -> c 1 1"
+        elif batch[key].ndim == 3:
+            stats_patterns[key] = "b s c -> c "
         elif batch[key].ndim == 2:
             stats_patterns[key] = "b c -> c "
         elif batch[key].ndim == 1:
@@ -105,7 +107,7 @@ def compute_stats(dataset, batch_size=8, num_workers=8, max_num_samples=None):
     for i, batch in enumerate(
         tqdm.tqdm(dataloader, total=ceil(max_num_samples / batch_size), desc="Compute mean, min, max")
     ):
-        this_batch_size = len(batch["index"])
+        this_batch_size = len(batch)
         running_item_count += this_batch_size
         if first_batch is None:
             first_batch = deepcopy(batch)
@@ -131,7 +133,7 @@ def compute_stats(dataset, batch_size=8, num_workers=8, max_num_samples=None):
     for i, batch in enumerate(
         tqdm.tqdm(dataloader, total=ceil(max_num_samples / batch_size), desc="Compute std")
     ):
-        this_batch_size = len(batch["index"])
+        this_batch_size = len(batch)
         running_item_count += this_batch_size
         # Sanity check to make sure the batches are still in the same order as before.
         if first_batch_ is None:

@@ -2,10 +2,18 @@
 logs
 tmp
 wandb
+log_model/
+log_tensorboard/
 
 # Data
 data
 outputs
+re/*
+/re/*
+*jpg
+*pth
+/*jpg
+/*pth
 
 # Apple
 .DS_Store
