@@ -6,7 +6,7 @@ log_model/
 log_tensorboard/
 
 # Data
-data
+data/*
 outputs
 re/*
 /re/*
